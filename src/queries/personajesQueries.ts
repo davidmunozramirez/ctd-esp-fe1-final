@@ -11,8 +11,8 @@ export const buscarPersonajes = async (personajeName: string): Promise<Personaje
     return data.filter(personaje => !personajeName || personaje.name?.toLocaleLowerCase().startsWith(personajeName?.toLocaleLowerCase()))
 }
 
-export const getPersonaje = async (personajeName: string): Promise<any> => {
-    const response = await fetch(`https://rickandmortyapi.com/api/character/?name=${personajeName}`);
+export const getPersonaje = async (personajeName: string, numeroPagina :number): Promise<any> => {
+    const response = await fetch(`https://rickandmortyapi.com/api/character/?page=${numeroPagina}&name=${personajeName}`);
     const data = await response.json();
     return data;
 }

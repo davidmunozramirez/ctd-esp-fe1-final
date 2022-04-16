@@ -4,3 +4,9 @@
   grid-gap: 20px;
   justify-items: center;
 }
+
+.error{
+  text-align: center;
+  color: red;
+  border: black 1px solid;
+}

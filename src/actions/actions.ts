@@ -2,12 +2,13 @@ import { Personaje, PersonajeWithProps } from "../types/personaje.type"
 
 export type BuscarPersonajeType = {
     type: "BUSCAR_PERSONAJE",
-    payload: {name: string}
+    payload: {name: string, numeroPagina: number}
 }
 
-export const buscarPersonaje = (name: string): BuscarPersonajeType =>{
+
+export const buscarPersonaje = (name: string, numeroRecibido: number = 1): BuscarPersonajeType =>{
     return{
         type: "BUSCAR_PERSONAJE",
-        payload: {name : name}
+        payload: {name : name, numeroPagina: numeroRecibido}
     }
 }

@@ -17,6 +17,10 @@ const Filtros = (): JSX.Element=> {
         if (textoBusqueda.length > CARACTERES_MINIMOS){
             dispatch(buscarPersonaje(textoBusqueda))
         }
+
+        if (textoBusqueda.length == 0){
+            dispatch(buscarPersonaje(""))
+        }
         
         
     }

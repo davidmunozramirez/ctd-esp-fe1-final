@@ -9,11 +9,16 @@ import './paginacion.css';
  * 
  * @returns un JSX element 
  */
-const Paginacion = (): JSX.Element => {
+const Paginacion = (props :any): JSX.Element => {
+
+    console.log(props);
+    
+
+    
 
     return <div className="paginacion">
-        <button disabled={true} className={"primary"}>Anterior</button>
-        <button disabled={false} className={"primary"}>Siguiente</button>
+        <button disabled={false} className={"primary"} onClick={() => {props.disminuirPagina()}}>Anterior</button>
+        <button disabled={false} className={"primary"} onClick={() => props.aumentarPagina()}>Siguiente</button>
     </div>
 }
 

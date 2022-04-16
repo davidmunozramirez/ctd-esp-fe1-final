@@ -16,30 +16,46 @@ import TarjetaPersonaje from './tarjeta-personaje.componente';
 
 
 
-const GrillaPersonajes = () => {
+const GrillaPersonajes = (props : any) => {
     
     const nombrePersonaje = useSelector((state: any) => state.personaje.busqueda)
     const [personajeBuscados, setPersonajeBuscados]:any = useState([]);
 
+    console.log("Este es afuera",props.numeroPagina);
+
+    
+    const pivote = nombrePersonaje
+    
     useEffect(() =>{ 
 
-        getPersonaje(nombrePersonaje).then((data) => 
+
+        console.log("Este es adentro",props.numeroPagina);
+        getPersonaje(nombrePersonaje, props.numeroPagina).then((data) => 
         {
-            console.log("data, desde grilla", data.results);
-            setPersonajeBuscados(data.results)}
+            console.log("data, desde grilla", data.info);
+            setPersonajeBuscados(data.results)
+        }
         );
 
+        if (nombrePersonaje && nombrePersonaje) {
+            props.reiniciarPagina(1)
+            
+        }
+        
         console.log(personajeBuscados);
+        
+    },[nombrePersonaje, props.numeroPagina])
+    
 
-    },[nombrePersonaje])
-
-
-    return <div className="grilla-personajes">
+    return personajeBuscados ?(
+        <div className="grilla-personajes">
         {
-        personajeBuscados?.map((personajito:any, index:any) => {
-            return <TarjetaPersonaje data={personajito} key={index}/>
-        })}
-    </div>
+            personajeBuscados?.map((personajito:any, index:any) => {
+                return <TarjetaPersonaje data={personajito} key={index}/>
+            })
+        }
+        </div>
+    ) : <p className="error"> Por favor realiza una busqueda válida </p>
 }
 
 export default GrillaPersonajes;
