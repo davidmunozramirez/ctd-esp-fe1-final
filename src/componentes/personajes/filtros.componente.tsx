@@ -10,11 +10,11 @@ const Filtros = (): JSX.Element=> {
 
     console.log(textoBusqueda)
     
-    const CARACTERES_MINIMOS:number = 3 
+    const CARACTERES_MINIMOS:number = 4 
 
     const ejecutarBuscador = () =>{
         
-        if (textoBusqueda.length > CARACTERES_MINIMOS){
+        if (textoBusqueda.length >= CARACTERES_MINIMOS){
             dispatch(buscarPersonaje(textoBusqueda))
         }
 

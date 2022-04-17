@@ -30,7 +30,7 @@ const PaginaInicio = () => {
         <Filtros />
         <Paginacion aumentarPagina={aumentarPagina} disminuirPagina={disminuirPagina}/>
         <GrillaPersonajes numeroPagina={contador} reiniciarPagina={setContador} />
-        <Paginacion />
+        <Paginacion aumentarPagina={aumentarPagina} disminuirPagina={disminuirPagina}/>
     </div>
 }
 

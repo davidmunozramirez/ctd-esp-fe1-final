@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getPersonaje } from '../../queries/personajesQueries';
+import { getPersonaje, getPersonajeEspecifico } from '../../queries/personajesQueries';
 import './grilla-personajes.css';
 import TarjetaPersonaje from './tarjeta-personaje.componente';
 
@@ -21,10 +21,8 @@ const GrillaPersonajes = (props : any) => {
     const nombrePersonaje = useSelector((state: any) => state.personaje.busqueda)
     const [personajeBuscados, setPersonajeBuscados]:any = useState([]);
 
-    console.log("Este es afuera",props.numeroPagina);
+    console.log("Este es afuera",props.numeroPagina); // aparece tres 3 veces al cargar la página
 
-    
-    const pivote = nombrePersonaje
     
     useEffect(() =>{ 
 
@@ -36,15 +34,19 @@ const GrillaPersonajes = (props : any) => {
             setPersonajeBuscados(data.results)
         }
         );
-
-        if (nombrePersonaje && nombrePersonaje) {
-            props.reiniciarPagina(1)
-            
-        }
         
         console.log(personajeBuscados);
         
-    },[nombrePersonaje, props.numeroPagina])
+    },[props.numeroPagina])
+
+    useEffect(() => {
+        // quito el condicional anterior y agrego otro useEffect que traiga la página 1 del personajeEspecífico
+        getPersonajeEspecifico(nombrePersonaje).then((data) => {
+            setPersonajeBuscados(data.results)
+            props.reiniciarPagina(1)
+        })
+
+    }, [nombrePersonaje])
     
 
     return personajeBuscados ?(
