@@ -21,7 +21,7 @@ const GrillaPersonajes = (props : any) => {
     const nombrePersonaje = useSelector((state: any) => state.personaje.busqueda)
     const [personajeBuscados, setPersonajeBuscados]:any = useState([]);
 
-    console.log("Este es afuera",props.numeroPagina); // aparece tres 3 veces al cargar la página
+    //console.log("Este es afuera",props.numeroPagina);
 
     
     useEffect(() =>{ 
@@ -30,17 +30,17 @@ const GrillaPersonajes = (props : any) => {
         console.log("Este es adentro",props.numeroPagina);
         getPersonaje(nombrePersonaje, props.numeroPagina).then((data) => 
         {
-            console.log("data, desde grilla", data.info);
+            console.log("data, desde grilla", data.results);
             setPersonajeBuscados(data.results)
         }
         );
         
-        console.log(personajeBuscados);
+        //console.log(personajeBuscados);
         
     },[props.numeroPagina])
 
     useEffect(() => {
-        // quito el condicional anterior y agrego otro useEffect que traiga la página 1 del personajeEspecífico
+
         getPersonajeEspecifico(nombrePersonaje).then((data) => {
             setPersonajeBuscados(data.results)
             props.reiniciarPagina(1)

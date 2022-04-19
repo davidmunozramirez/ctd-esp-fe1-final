@@ -17,9 +17,6 @@ const PaginaInicio = () => {
 
     const aumentarPagina = () => setContador(contador + 1)
     const disminuirPagina = () => setContador(contador - 1)
-    const reiniciarPagina = () => setContador(1)
-
-    console.log(contador);
     
 
     return <div className="container">
@@ -28,9 +25,9 @@ const PaginaInicio = () => {
             <button className="danger">Test Button</button>
         </div>
         <Filtros />
-        <Paginacion aumentarPagina={aumentarPagina} disminuirPagina={disminuirPagina}/>
+        <Paginacion aumentarPagina={aumentarPagina} disminuirPagina={disminuirPagina} numeroPagina={contador}/>
         <GrillaPersonajes numeroPagina={contador} reiniciarPagina={setContador} />
-        <Paginacion aumentarPagina={aumentarPagina} disminuirPagina={disminuirPagina}/>
+        <Paginacion aumentarPagina={aumentarPagina} disminuirPagina={disminuirPagina} numeroPagina={contador}/>
     </div>
 }
 

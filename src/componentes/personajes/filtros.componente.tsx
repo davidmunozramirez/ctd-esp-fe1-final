@@ -8,17 +8,17 @@ const Filtros = (): JSX.Element=> {
     const dispatch = useDispatch()
     const [textoBusqueda, setTextoBusqueda] = useState<string>("")
 
-    console.log(textoBusqueda)
+    //console.log(textoBusqueda)
     
-    const CARACTERES_MINIMOS:number = 4 
+    const CARACTERES_MINIMOS:number = 3 
 
     const ejecutarBuscador = () =>{
         
-        if (textoBusqueda.length >= CARACTERES_MINIMOS){
+        if (textoBusqueda.length > CARACTERES_MINIMOS){
             dispatch(buscarPersonaje(textoBusqueda))
         }
 
-        if (textoBusqueda.length == 0){
+        if (textoBusqueda.length === 0){
             dispatch(buscarPersonaje(""))
         }
         

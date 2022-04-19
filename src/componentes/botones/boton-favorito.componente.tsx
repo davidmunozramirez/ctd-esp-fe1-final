@@ -2,8 +2,9 @@ import './boton-favorito.css';
 
 export interface BotonFavoritoProps {
     esFavorito: boolean,    
-    onClick : () => void ;
+    onClick : any ;
 }
+
 /**
  * Boton que indica si un elemento es favorito o no, y da la posibilidad de marcarlo/desmarcarlo
  * 
@@ -14,10 +15,15 @@ export interface BotonFavoritoProps {
  */
 
 const BotonFavorito = ({esFavorito, onClick} : BotonFavoritoProps): JSX.Element => {
+
+
+    
     const src = esFavorito ? "/imagenes/star-filled.png" : "/imagenes/star.png"
 
+    
+
     return <div className="boton-favorito">
-        <img src={src} alt={"favorito"} />
+        <img src={src} alt={"favorito"} onClick={onClick}/>
     </div>
 }
 

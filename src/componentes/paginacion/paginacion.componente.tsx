@@ -11,13 +11,8 @@ import './paginacion.css';
  */
 const Paginacion = (props :any): JSX.Element => {
 
-    console.log(props);
-    
-
-    
-
     return <div className="paginacion">
-        <button disabled={false} className={"primary"} onClick={() => {props.disminuirPagina()}}>Anterior</button>
+        <button disabled={props.numeroPagina === 1 ? true : false} className={"primary"} onClick={() => {props.disminuirPagina()}}>Anterior</button>
         <button disabled={false} className={"primary"} onClick={() => props.aumentarPagina()}>Siguiente</button>
     </div>
 }
